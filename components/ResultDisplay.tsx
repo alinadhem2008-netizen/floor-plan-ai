@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Download, Box } from "lucide-react";
 import { GenerationResult } from "@/lib/mockApi";
-import Image from "next/image";
 
 export default function ResultDisplay({
   result,
@@ -19,11 +18,10 @@ export default function ResultDisplay({
     >
       <div className="overflow-hidden rounded-2xl border border-slate-100 shadow-xl">
         <div className="relative aspect-square w-full bg-slate-50">
-          <Image
+          <img
             src={result.imageUrl}
             alt="المخطط المعماري الناتج"
-            fill
-            className="object-contain"
+            className="h-full w-full object-cover"
           />
         </div>
 
