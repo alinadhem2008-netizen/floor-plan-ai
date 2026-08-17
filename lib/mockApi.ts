@@ -6,7 +6,6 @@ export type GenerationResult = {
   prompt: string;
 };
 
-// محاكاة استدعاء API حقيقي (Stable Diffusion / OpenAI Images)
 export async function generateFloorPlan(
   values: FormValues
 ): Promise<GenerationResult> {
@@ -15,7 +14,7 @@ export async function generateFloorPlan(
   await new Promise((resolve) => setTimeout(resolve, 3000));
 
   return {
-    imageUrl: "https://placehold.co/800x800/F1F5F9/0B1F3A?text=Floor+Plan",
+    imageUrl: "https://picsum.photos/800/800",
     prompt,
   };
 }
