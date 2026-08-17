@@ -10,11 +10,11 @@ export async function generateFloorPlan(
   values: FormValues
 ): Promise<GenerationResult> {
   const prompt = buildArchitecturalPrompt(values);
-
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  const encodedPrompt = encodeURIComponent(prompt);
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&nologo=true`;
 
   return {
-    imageUrl: "https://picsum.photos/800/800",
+    imageUrl,
     prompt,
   };
 }
