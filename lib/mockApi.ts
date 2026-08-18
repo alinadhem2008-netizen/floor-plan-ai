@@ -11,7 +11,7 @@ export async function generateFloorPlan(
 ): Promise<GenerationResult> {
   const prompt = buildArchitecturalPrompt(values);
   const encodedPrompt = encodeURIComponent(prompt);
-  const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&nologo=true`;
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodedPrompt}?width=800&height=800&nologo=true&model=flux`;
 
   return {
     imageUrl,
