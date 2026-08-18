@@ -39,7 +39,7 @@ export default function ResultDisplay({
       </div>
 
       <p className="mt-4 text-center text-xs text-slate-400">
-        هذا المخطط استرشادي — راجعه مع مهندس معماري مرخّص قبل البناء
+        هذا المخطط تخيّلي فني — استخدمه كإلهام، ثم راجعه مع مهندس معماري مرخّص للحصول على مقاييس دقيقة
       </p>
     </motion.div>
   );
