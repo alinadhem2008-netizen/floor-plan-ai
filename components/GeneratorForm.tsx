@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Ruler, Sparkles, ExternalLink } from "lucide-react";
+import { Ruler, Sparkles } from "lucide-react";
 
 export type FormValues = {
   width: string;
@@ -10,7 +10,11 @@ export type FormValues = {
   rooms: string;
 };
 
-export default function GeneratorForm() {
+export default function GeneratorForm({
+  onGenerate,
+}: {
+  onGenerate: (values: FormValues) => void;
+}) {
   const [values, setValues] = useState<FormValues>({
     width: "",
     length: "",
@@ -20,12 +24,7 @@ export default function GeneratorForm() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!values.width || !values.length) return;
-
-    const description = `منزل بمساحة أرض ${values.width} متر عرض × ${values.length} متر طول، ${values.rooms} غرف نوم، مع منور مركزي (فناء داخلي) للإضاءة والتهوية بدون شبابيك جانبية، غرفة استقبال، مطبخ، حمامات`;
-
-    navigator.clipboard.writeText(description).catch(() => {});
-
-    window.open("https://www.maket.ai/ai-floor-plan-generator", "_blank");
+    onGenerate(values);
   }
 
   return (
@@ -75,7 +74,7 @@ export default function GeneratorForm() {
           </Field>
 
           <div className="md:col-span-2">
-            <Field label="عدد الغرف (اختياري)">
+            <Field label="عدد الغرف">
               <select
                 value={values.rooms}
                 onChange={(e) =>
@@ -97,13 +96,8 @@ export default function GeneratorForm() {
           className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[#0B1F3A] px-6 py-4 text-base font-bold text-white transition hover:bg-[#0B1F3A]/90"
         >
           <Sparkles className="h-5 w-5 text-[#C9A24B]" />
-          توليد المخطط عبر Maket.ai
-          <ExternalLink className="h-4 w-4" />
+          توليد المخطط
         </button>
-
-        <p className="mt-3 text-center text-xs text-slate-400">
-          راح ننسخ وصف مشروعك تلقائياً — الصقه بمربع البحث بموقع Maket.ai
-        </p>
       </motion.form>
     </section>
   );
